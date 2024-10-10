@@ -1,7 +1,7 @@
 .signuppage__flex {
     display: flex;
     justify-content: center;
-    background-image: url(../src/Images/bgnew.svg);
+    /* background-image: url(../src/Images/bgnew.svg); */
     background-size: cover;
     background-color: #f8f8f8;
     gap: 20px;
