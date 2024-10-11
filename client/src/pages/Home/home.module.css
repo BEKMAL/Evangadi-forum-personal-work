@@ -46,3 +46,8 @@
   text-align: center;
 }
 
+@media screen and (max-width: 576px) {
+  .home__questioncontainer {
+    margin-bottom: 20px;
+  }
+}

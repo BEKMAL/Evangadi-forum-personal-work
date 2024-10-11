@@ -9,7 +9,7 @@
 @media screen and (max-width: 576px) {
     .Landing__flex {
         display: block; 
-        width: 80%;
+        width: 98%;
         margin: 0 auto;
     }
     

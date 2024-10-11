@@ -51,7 +51,12 @@ app.use('/api',authMiddleware,answerRoutes)
       console.log("database connection established");
      
     } catch (error) {
-      console.log(error.message)
+      setTimeout(() => {
+        
+        console.log(error.message,"trying db reconnection after 15s")
+        start();
+      }, 15000); 
+     
     }
   }
   start();

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './signup.module.css'
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import axios from '../../../src/Api/axiosConfig'
 import { useNavigate } from 'react-router-dom'
-
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 function SignUp() {
 const navigate =useNavigate()
 const emailDom = useRef(null);
@@ -13,6 +14,8 @@ const lastnameDom= useRef(null);
 const usernameDom=useRef(null)
 const passwordDom= useRef(null);
 const messageDom=useRef(null);
+const [showPassword, setShowPassword] = useState(false);
+const [password, setPassword] = useState('');
 async function handlesubmit(e) {
     e.preventDefault();
     const emailvalue = emailDom.current.value;
@@ -42,6 +45,10 @@ async function handlesubmit(e) {
     }
   
 }
+const togglePasswordVisibility = () => {
+  // e.preventDefault();
+  setShowPassword(!showPassword);
+}
   return (
     <section className={classes.sign__container}>
     <div className={classes.toptext__container}>
@@ -58,11 +65,16 @@ async function handlesubmit(e) {
          <input  ref={lastnameDom}    type="text" name="lastname" id="lastname" required placeholder='Last Name' />
          </div>
          <input  ref={usernameDom}     type="text" name="username" id="username" required placeholder='username' />
-         <input  ref={passwordDom}    type="password" name="password" id="password" required placeholder='password'/>
-        
+         {/* <input  ref={passwordDom}    type="password" name="password" id="password" required placeholder='password'/> */}
+         <div  ref={passwordDom}  className={classes.password_con}>
+              <input     ref={passwordDom}   onChange={(e) => setPassword(e.target.value)}    type={showPassword ? 'text' : 'password'}  value={password} name="password" id="password" required placeholder='password' />
+              <button    type='button'   onClick={togglePasswordVisibility}>{showPassword ? <FaEyeSlash size={20}/> : <FaEye size={20}/>}
+              </button>
+          
+          </div>
          <div  className={classes.toptext__container__partwo}>
          <p style={{fontSize:"14px"}}>I agree to the <a href="#">privacy policy</a> and <a href="#">terms of service.</a></p>
-         </div><button type="submit">Agree and Join</button>
+         </div><button  className={classes.signup__form__button} type="submit">Agree and Join</button>
        
      </form>
      <div  className={classes.toptext__container__partwo}>
